@@ -1,6 +1,12 @@
 <?php
 
-namespace Riadha;
+/**
+ * Track an athlete profile
+ *
+ * @package Riadha\Profiles
+ */
+
+namespace Riadha\Profiles\Data\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
