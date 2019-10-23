@@ -55,3 +55,22 @@ jobs:
 
       # run tests with phpunit or codecept
       - run: ./vendor/bin/phpunit
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - run:
+          name: 'Deploy over ssh'
+          command: |
+            ssh $SSH_USER@$SSH_HOST "cd ~/projects/riadha.co.ke && git checkout master && git pull origin master && composer install && php artisan migrate"
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
