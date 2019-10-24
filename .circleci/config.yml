@@ -59,10 +59,13 @@ jobs:
     machine:
       enabled: true
     steps:
+      - add_ssh_keys:
+            fingerprints:
+              - "c5:c5:3d:61:1a:7e:7f:18:eb:bf:55:6b:83:2a:a6:96"
       - run:
           name: 'Deploy over ssh'
           command: |
-            ssh $SSH_USER@$SSH_HOST "cd ~/projects/riadha.co.ke && git checkout master && git pull origin master && composer install && php artisan migrate"
+            ssh $SSH_USER@$SSH_HOST "cd ~ && ./deploy.sh"
 workflows:
   version: 2
   build-and-deploy:
