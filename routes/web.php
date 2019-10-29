@@ -18,9 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/admin', 'AdminController@index')
-    ->where('any', '.*');
+    ->where('any', '.*')
+    ->middleware(['auth','admin']);
 
 Route::get('/admin/{any}', 'AdminController@index')
-    ->where('any', '.*');
+    ->where('any', '.*')
+    ->middleware(['auth','admin']);
 
 Route::get('/home', 'HomeController@index')->name('home');
