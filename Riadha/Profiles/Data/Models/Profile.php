@@ -18,4 +18,24 @@ class Profile extends Model
      * @var string
      */
     protected $table = 'profiles';
+
+    protected $fillable = [
+        'first_name',
+        'middle_name',
+        'last_name',
+        'country',
+        'slug',
+        'status'
+    ];
+
+    /**
+     * Set the profile's country.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setCountryAttribute($value)
+    {
+        $this->attributes['country'] = strtolower($value);
+    }
 }
