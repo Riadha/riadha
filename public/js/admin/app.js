@@ -1939,7 +1939,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'newprofile',
+  data: function data() {
+    return {
+      profile: {
+        first_name: null,
+        middle_name: null,
+        last_name: null,
+        country: 'KEN'
+      }
+    };
+  },
+  methods: {
+    create: function create() {
+      console.log(this.profile);
+      axios.post('/admin/v1/profiles', this.profile).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        // handle error
+        console.log(error.response);
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -37400,103 +37432,206 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "new_item_form" }, [
-          _c("div", { staticClass: "form_title" }, [
-            _vm._v("\n                New Profile\n            ")
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "new_item_form" }, [
+        _c("div", { staticClass: "form_title" }, [
+          _vm._v("\n                New Profile\n            ")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form_body" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "first_name" } }, [
+              _vm._v("First Name")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.profile.first_name,
+                  expression: "profile.first_name"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "first_name",
+                "aria-describedby": "firstNameHelp",
+                placeholder: "Enter first name"
+              },
+              domProps: { value: _vm.profile.first_name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.profile, "first_name", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "small",
+              {
+                staticClass: "form-text text-muted",
+                attrs: { id: "firstNameHelp" }
+              },
+              [_vm._v("First name of the athlete.")]
+            )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "form_body" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "first_name" } }, [
-                _vm._v("First Name")
-              ]),
-              _vm._v(" "),
-              _c("input", {
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "middle_name" } }, [
+              _vm._v("Middle Name")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.profile.middle_name,
+                  expression: "profile.middle_name"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "middle_name",
+                "aria-describedby": "middleNameHelp",
+                placeholder: "Enter middle name"
+              },
+              domProps: { value: _vm.profile.middle_name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.profile, "middle_name", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "small",
+              {
+                staticClass: "form-text text-muted",
+                attrs: { id: "middleNameHelp" }
+              },
+              [_vm._v("Middle name of the athlete.")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "last_name" } }, [_vm._v("Last Name")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.profile.last_name,
+                  expression: "profile.last_name"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "last_name",
+                "aria-describedby": "lastNameHelp",
+                placeholder: "Enter last name"
+              },
+              domProps: { value: _vm.profile.last_name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.profile, "last_name", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "small",
+              {
+                staticClass: "form-text text-muted",
+                attrs: { id: "lastNameHelp" }
+              },
+              [_vm._v("Last name of the athlete.")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "athlete_country" } }, [
+              _vm._v("Country")
+            ]),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.profile.country,
+                    expression: "profile.country"
+                  }
+                ],
                 staticClass: "form-control",
                 attrs: {
                   type: "text",
-                  id: "first_name",
-                  "aria-describedby": "firstNameHelp",
-                  placeholder: "Enter first name"
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "small",
-                {
-                  staticClass: "form-text text-muted",
-                  attrs: { id: "firstNameHelp" }
+                  id: "athlete_country",
+                  "aria-describedby": "countrySelectHelp"
                 },
-                [_vm._v("First name of the athlete.")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "middle_name" } }, [
-                _vm._v("Middle Name")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "middle_name",
-                  "aria-describedby": "middleNameHelp",
-                  placeholder: "Enter middle name"
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.profile,
+                      "country",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
                 }
-              }),
-              _vm._v(" "),
-              _c(
-                "small",
-                {
-                  staticClass: "form-text text-muted",
-                  attrs: { id: "middleNameHelp" }
-                },
-                [_vm._v("Middle name of the athlete.")]
-              )
-            ]),
+              },
+              [
+                _c("option", { attrs: { value: "KEN" } }, [_vm._v("Kenya")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "UGA" } }, [_vm._v("Uganda")])
+              ]
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "last_name" } }, [
-                _vm._v("Last Name")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "last_name",
-                  "aria-describedby": "lastNameHelp",
-                  placeholder: "Enter last name"
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "small",
-                {
-                  staticClass: "form-text text-muted",
-                  attrs: { id: "lastNameHelp" }
-                },
-                [_vm._v("Last name of the athlete.")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Submit")])
-          ])
+            _c(
+              "small",
+              {
+                staticClass: "form-text text-muted",
+                attrs: { id: "countrySelectHelp" }
+              },
+              [_vm._v("Current country for the athlete")]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            { staticClass: "btn btn-primary", on: { click: _vm.create } },
+            [_vm._v("Submit")]
+          )
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
