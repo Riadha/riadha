@@ -34,6 +34,10 @@ class ProfileController extends Controller{
 
         $profile = $this->manager->create($request->all());
 
+        if ($request->has('profile_photo')){
+            $profile->profilephoto = $request->file('profile_photo');
+        }
+
         return response()->json($profile);
     }
 }
