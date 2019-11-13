@@ -8,10 +8,30 @@
 
 namespace Riadha\Profiles\Data\Models;
 
+use Czim\Paperclip\Contracts\AttachableInterface;
+use Czim\Paperclip\Model\PaperclipTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
+class Profile extends Model implements AttachableInterface
 {
+    use PaperclipTrait;
+
+    public function __construct(array $attributes = [])
+    {
+        $this->hasAttachedFile('profilephoto', [
+            'variants' => [
+                'display' => '800x800',
+                'medium' => '400x400',
+                'thumb' => '100x100',
+            ],
+            'attributes' => [
+                'variants' => true,
+            ],
+        ]);
+
+        parent::__construct($attributes);
+    }
+
     /**
      * The table associated with the model.
      *

@@ -18,6 +18,7 @@ class AddProfilePhotoToProfiles extends Migration
             $table->integer('profilephoto_file_size')->nullable();
             $table->string('profilephoto_content_type')->nullable();
             $table->timestamp('profilephoto_updated_at')->nullable();
+            $table->string('profilephoto_variants', 255)->nullable();
         });
     }
 
@@ -33,7 +34,8 @@ class AddProfilePhotoToProfiles extends Migration
                 'profilephoto_file_name',
                 'profilephoto_file_size',
                 'profilephoto_content_type',
-                'profilephoto_updated_at'
+                'profilephoto_updated_at',
+                'profilephoto_variants'
             ]);
         });
     }
