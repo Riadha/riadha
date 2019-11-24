@@ -1,13 +1,13 @@
 <template>
-    <div class="container">
-        <div class="row add_item_row">
+    <div class="container bg-white medium-margin-top">
+        <div class="row action_item_row">
             <router-link to="/admin/profiles/new" class="add_new_button">
                 New Profile
             </router-link>
         </div>
 
         <div class="row">
-            Profiles
+            <div class="col-12">Profiles</div>
         </div>
     </div>
 </template>
