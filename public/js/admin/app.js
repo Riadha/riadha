@@ -1962,7 +1962,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     create: function create() {
-      console.log(this.profile);
       axios.post('/admin/v1/profiles', this.profile).then(function (response) {
         console.log(response);
       })["catch"](function (error) {
@@ -37311,7 +37310,8 @@ var render = function() {
     _c(
       "nav",
       {
-        staticClass: "navbar navbar-expand-md navbar-light bg-white shadow-sm"
+        staticClass:
+          "navbar navbar-expand-md navbar-light bg-white shadow-sm admin-navbar"
       },
       [
         _c(
@@ -37321,7 +37321,12 @@ var render = function() {
             _c(
               "router-link",
               { staticClass: "navbar-brand", attrs: { to: "/admin" } },
-              [_vm._v("\n                Riadha\n            ")]
+              [
+                _c("img", {
+                  staticClass: "logo",
+                  attrs: { src: "/logo.png", alt: "Logo" }
+                })
+              ]
             ),
             _vm._v(" "),
             _vm._m(0),
@@ -37653,10 +37658,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", { staticClass: "container bg-white medium-margin-top" }, [
     _c(
       "div",
-      { staticClass: "row add_item_row" },
+      { staticClass: "row action_item_row" },
       [
         _c(
           "router-link",
@@ -37670,10 +37675,19 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [_vm._v("\n        Profiles\n    ")])
+    _vm._m(0)
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }, [_vm._v("Profiles")])
+    ])
+  }
+]
 render._withStripped = true
 
 
