@@ -2,20 +2,18 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+    <div class="row bg-white">
+        <div class="col-2">
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
+        </div>
+        <div class="col-10 main">
+            <div class="action__panel">
+                @if(auth()->user()->isAdmin())
+                    <a href="/admin">Go to dashboard</a>
+                @endif
+            </div>
+            <div class="account__header">
+                My Account
             </div>
         </div>
     </div>
