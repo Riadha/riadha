@@ -8,9 +8,31 @@
 
 namespace Riadha\Profiles;
 
-class ProfilesManager{
-    function __construct()
-    {
+use Riadha\Profiles\Data\Models\Profile;
 
+class ProfilesManager{
+
+    public $profile;
+
+    function __construct(Profile $profile)
+    {
+        $this->profile = $profile;
+    }
+
+    public function getAll()
+    {
+        return $this->profile->getAll();
+    }
+
+
+    public function find($id)
+    {
+        return $this->profile->findProfile($id);
+    }
+
+
+    public function delete($id)
+    {
+        return $this->profile->deleteProfile($id);
     }
 }

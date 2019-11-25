@@ -18,4 +18,25 @@ class Profile extends Model
      * @var string
      */
     protected $table = 'profiles';
+    
+    protected $fillable = [
+        'first_name', 'middle_name', 'last_name',
+    ];
+
+    public function getAll()
+    {
+        return static::all();
+    }
+
+
+    public function findProfile($id)
+    {
+        return static::find($id);
+    }
+
+
+    public function deleteProfile($id)
+    {
+        return static::find($id)->delete();
+    }
 }
