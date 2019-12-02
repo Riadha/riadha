@@ -14,16 +14,26 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # Using the RAM variation mitigates I/O contention
       # for database intensive operations.
-      # - image: circleci/mysql:5.7-ram
+      - image: circleci/mysql:5.7
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_USER: root
+          MYSQL_ROOT_PASSWORD: ''
+          MYSQL_DATABASE: forge
       #
       # - image: redis:2.8.19
 
     steps:
       - checkout
 
-      - run: sudo apt update
-      - run: sudo apt install zlib1g-dev libsqlite3-dev
-      - run: sudo docker-php-ext-install zip
+      - run:
+          name: 'Install PHP extensions'
+          command: |
+            sudo apt update
+            sudo docker-php-ext-install zip
+            sudo docker-php-ext-install bcmath
+            sudo docker-php-ext-install pdo_mysql
+            sudo apt install -y mysql-client
 
       # Download and cache dependencies
       - restore_cache:
@@ -50,11 +60,12 @@ jobs:
             - node_modules
 
       # prepare the database
-      - run: touch storage/testing.sqlite
-      #- run: php artisan migrate --env=testing --database=sqlite_testing --force
+      - run: php artisan migrate --force
 
-      # run tests with phpunit or codecept
+      # run tests with phpunit
       - run: ./vendor/bin/phpunit
+      - run: ./vendor/bin/phpunit --coverage-clover build/coverage/xml tests
+      - run: ./vendor/bin/codacycoverage clover build/coverage/xml
   deploy:
     machine:
       enabled: true

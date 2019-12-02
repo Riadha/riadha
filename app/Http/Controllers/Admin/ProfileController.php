@@ -38,6 +38,6 @@ class ProfileController extends Controller{
             $profile->profilephoto = $request->file('profile_photo');
         }
 
-        return response()->json($profile);
+        return response()->json($profile, 200);
     }
 }
