@@ -34,7 +34,6 @@ jobs:
             sudo docker-php-ext-install bcmath
             sudo docker-php-ext-install pdo_mysql
             sudo apt install -y mysql-client
-            pecl install xdebug
 
       # Download and cache dependencies
       - restore_cache:
