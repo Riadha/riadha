@@ -34,6 +34,7 @@ jobs:
             sudo docker-php-ext-install bcmath
             sudo docker-php-ext-install pdo_mysql
             sudo apt install -y mysql-client
+            pecl install xdebug
 
       # Download and cache dependencies
       - restore_cache:
@@ -64,7 +65,8 @@ jobs:
 
       # run tests with phpunit
       - run: ./vendor/bin/phpunit
-      - run: ./vendor/bin/codacycoverage phpunit
+      - run: ./vendor/bin/phpunit --coverage-clover build/coverage/xml tests
+      - run: ./vendor/bin/codacycoverage clover build/coverage/xml
   deploy:
     machine:
       enabled: true
