@@ -6,6 +6,9 @@
 
 namespace Riadha\News;
 
+use Riadha\News\Data\Models\Post;
+use Riadha\News\Data\Repository\NewsRepository;
+
 class NewsManager
 {
     /**
@@ -19,6 +22,7 @@ class NewsManager
 
     function __construct()
     {
+        $this->repo = new NewsRepository(Post::class);
     }
 
     /**
@@ -27,5 +31,16 @@ class NewsManager
     public function create()
     {
 
+    }
+
+    /**
+     * Count how many posts are currently stored.
+     *
+     * @todo Add support for a filter
+     *
+     * @return int
+     */
+    public function countNewsPosts() {
+        return $this->repo->getCount();
     }
 }

@@ -27,8 +27,26 @@ abstract class AbstractRepository implements RepositoryInterface {
      * Create a new model
      *
      * @param array $payload
+     *
+     * @return Model
      */
     public function create(array $payload) {
         return $this->model->create($payload);
+    }
+
+    /**
+     * Count the number of models in storage
+     *
+     * @return int
+     */
+    public function getCount() {
+        return $this->model->count();
+    }
+
+    /**
+     * Get a collection of the models
+     */
+    public function index() {
+        return $this->model->paginate(15);
     }
 }

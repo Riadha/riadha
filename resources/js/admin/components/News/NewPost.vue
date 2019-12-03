@@ -1,7 +1,7 @@
 <template>
     <div class="container bg-white medium-margin-top">
         <div class="row page-introduction-row">
-            <div class="col-12 admin-page-title">New Profile</div>
+            <div class="col-12 admin-page-title">New Post</div>
         </div>
 
         <div class="row form-wrapper-row">

@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito:300,400,700);@charset "UTF-8";
 
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
@@ -10652,12 +10652,29 @@ a.text-dark:focus {
   margin-top: 15px;
 }
 
+.form-control {
+  border-radius: 0;
+}
+
 .admin-navbar {
   padding: 0;
 }
 
 .admin-navbar .logo {
   height: 40px;
+}
+
+.admin-navbar .navbar-nav {
+  margin-left: 5em;
+}
+
+.admin-navbar .navbar-nav li {
+  margin-right: 3em;
+}
+
+.admin-navbar .navbar-nav li a {
+  font-weight: bold;
+  color: #1a9a30;
 }
 
 .action_item_row {
@@ -10668,5 +10685,30 @@ a.text-dark:focus {
   background: green;
   color: white;
   padding: 8px;
+}
+
+.page-introduction-row {
+  padding-top: 10px;
+}
+
+.page-introduction-row .admin-page-title {
+  font-weight: 300;
+  font-size: 2em;
+}
+
+.form-wrapper-row {
+  margin-top: 1.2em;
+}
+
+.form-wrapper-row .bordered-form-group-row {
+  border-top: 1px solid #f2f2f2;
+  padding-top: 10px;
+}
+
+.form-wrapper-row .bordered-form-group-row .form-group-label {
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-weight: 700;
+  margin-bottom: 2em;
 }
 
