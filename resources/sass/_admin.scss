@@ -3,6 +3,16 @@
     .logo{
         height:40px;
     }
+    .navbar-nav{
+        margin-left: 5em;
+        li{
+            margin-right:3em;
+            a{
+                font-weight: bold;
+                color: #1a9a30;
+            }
+        }
+    }
 }
 
 .action_item_row{
@@ -11,5 +21,27 @@
         background: green;
         color: white;
         padding: 8px;
+    }
+}
+
+.page-introduction-row{
+    padding-top: 10px;
+    .admin-page-title{
+        font-weight: 300;
+        font-size: 2em;
+    }
+}
+
+.form-wrapper-row{
+    margin-top: 2em;
+    .bordered-form-group-row{
+        border-top: 1px solid #f2f2f2;
+        padding-top: 10px;
+        .form-group-label{
+            text-transform: uppercase;
+            font-size: 0.8em;
+            font-weight: 700;
+            margin-bottom: 2em;
+        }
     }
 }
