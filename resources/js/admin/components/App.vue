@@ -1,9 +1,9 @@
 <template>
     <div>
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm admin-navbar">
             <div class="container">
                 <router-link to="/admin" class="navbar-brand">
-                    Riadha
+                    <img src="/logo.png" alt="Logo" class="logo">
                 </router-link>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false">
@@ -13,7 +13,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li>
+                            <router-link to="/admin/profiles" class="navbar-link">
+                                Profiles
+                            </router-link>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -25,7 +29,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="">
             <router-view></router-view>
         </main>
     </div>

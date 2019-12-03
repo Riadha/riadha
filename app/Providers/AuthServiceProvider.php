@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
+use App\Policies\ProfilePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
 use Riadha\Profiles\Data\Models\Profile;
-use App\Policies\ProfilePolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -16,8 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
-        Profile::class => ProfilePolicy::class,
+        Profile::class => ProfilePolicy::class
     ];
 
     /**

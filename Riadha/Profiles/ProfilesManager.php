@@ -9,30 +9,45 @@
 namespace Riadha\Profiles;
 
 use Riadha\Profiles\Data\Models\Profile;
+use Riadha\Profiles\Data\Repository\ProfileRepository;
 
 class ProfilesManager{
+    /**
+     * Database repository. Abstract DB functionality.
+     *
+     * @var
+     */
+    protected $repo;
 
-    public $profile;
-
-    function __construct(Profile $profile)
+    function __construct()
     {
-        $this->profile = $profile;
+        $this->repo = new ProfileRepository();
     }
 
-    public function getAll()
-    {
-        return $this->profile->getAll();
+    /**
+     * Create a new profile
+     *
+     * @param array $payload
+     *
+     * @return Data\Models\Profile
+     */
+    public function create(array $payload){
+        $profile = $this->repo->create($payload);
+
+        $this->generateSlug($profile);
+
+        return $profile;
     }
 
+    /**
+     * Generate a url slug for an athlete
+     */
+    private function generateSlug(Profile $profile){
+        $hyphenated_name = strtolower($profile->first_name . '-' . $profile->middle_name . '-' . $profile->last_name);
 
-    public function find($id)
-    {
-        return $this->profile->findProfile($id);
-    }
+        $slug = '/athlete/' . $profile->country .'/' . $profile->id . '/' . $hyphenated_name;
 
-
-    public function delete($id)
-    {
-        return $this->profile->deleteProfile($id);
+        $profile->slug = $slug;
+        $profile->save();
     }
 }

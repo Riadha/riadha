@@ -3,7 +3,6 @@
 namespace App\Policies;
 
 use App\User;
-use Riadha\Profiles\Data\Models\Profile;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ProfilePolicy
@@ -18,5 +17,16 @@ class ProfilePolicy
     public function __construct()
     {
         //
+    }
+
+    /**
+     * Determine if a user can create a new profile
+     *
+     * @param User $user
+     *
+     * @return boolean
+     */
+    public function create(User $user){
+        return $user->admin;
     }
 }

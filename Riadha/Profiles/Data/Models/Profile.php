@@ -8,35 +8,54 @@
 
 namespace Riadha\Profiles\Data\Models;
 
+use Czim\Paperclip\Contracts\AttachableInterface;
+use Czim\Paperclip\Model\PaperclipTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
+class Profile extends Model implements AttachableInterface
 {
+    use PaperclipTrait;
+
+    public function __construct(array $attributes = [])
+    {
+        $this->hasAttachedFile('profilephoto', [
+            'variants' => [
+                'display' => '800x800',
+                'medium' => '400x400',
+                'thumb' => '100x100',
+            ],
+            'attributes' => [
+                'variants' => true,
+            ],
+        ]);
+
+        parent::__construct($attributes);
+    }
+
     /**
      * The table associated with the model.
      *
      * @var string
      */
     protected $table = 'profiles';
-    
+
     protected $fillable = [
-        'first_name', 'middle_name', 'last_name',
+        'first_name',
+        'middle_name',
+        'last_name',
+        'country',
+        'slug',
+        'status'
     ];
 
-    public function getAll()
+    /**
+     * Set the profile's country.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setCountryAttribute($value)
     {
-        return static::all();
-    }
-
-
-    public function findProfile($id)
-    {
-        return static::find($id);
-    }
-
-
-    public function deleteProfile($id)
-    {
-        return static::find($id)->delete();
+        $this->attributes['country'] = strtolower($value);
     }
 }
