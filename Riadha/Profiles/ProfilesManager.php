@@ -21,7 +21,7 @@ class ProfilesManager{
 
     function __construct()
     {
-        $this->repo = new ProfileRepository();
+        $this->repo = new ProfileRepository(Profile::class);
     }
 
     /**
@@ -37,6 +37,15 @@ class ProfilesManager{
         $this->generateSlug($profile);
 
         return $profile;
+    }
+
+    /**
+     * Get a list of profiles.
+     *
+     * @todo Add filter capability
+     */
+    public function index() {
+        return $this->repo->index();
     }
 
     /**

@@ -24,6 +24,18 @@
                                 Posts
                             </router-link>
                         </li>
+
+                        <li>
+                            <router-link to="/admin/news" class="navbar-link">
+                                Data
+                            </router-link>
+                        </li>
+
+                        <li>
+                            <router-link to="/admin/news" class="navbar-link">
+                                System
+                            </router-link>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

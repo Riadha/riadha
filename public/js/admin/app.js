@@ -1881,6 +1881,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -2124,7 +2136,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      profiles: {}
+    };
+  },
+  mounted: function mounted() {
+    this.fetchProfiles();
+  },
+  methods: {
+    fetchProfiles: function fetchProfiles() {
+      var vm = this;
+      axios.get('/admin/v1/profiles').then(function (res) {
+        console.log(res);
+        vm.profiles = res.data.data;
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -37503,6 +37554,44 @@ var render = function() {
                       )
                     ],
                     1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "navbar-link",
+                          attrs: { to: "/admin/news" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Data\n                        "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "navbar-link",
+                          attrs: { to: "/admin/news" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            System\n                        "
+                          )
+                        ]
+                      )
+                    ],
+                    1
                   )
                 ]),
                 _vm._v(" "),
@@ -38133,7 +38222,41 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "row" })
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("table", { staticClass: "table table-striped" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.profiles, function(profile) {
+              return _c("tr", [
+                _c("td", [_vm._v(_vm._s(profile.id))]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    _vm._s(profile.first_name) +
+                      " " +
+                      _vm._s(profile.middle_name) +
+                      " " +
+                      _vm._s(profile.last_name)
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(profile.country))]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("a", { attrs: { href: profile.slug } }, [_vm._v("View")])
+                ]),
+                _vm._v(" "),
+                _c("td", [_vm._v("Edit")])
+              ])
+            }),
+            0
+          )
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -38144,6 +38267,24 @@ var staticRenderFns = [
     return _c("div", { staticClass: "row page-introduction-row" }, [
       _c("div", { staticClass: "col-12 admin-page-title" }, [
         _vm._v("Profiles")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("#ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Country")]),
+        _vm._v(" "),
+        _c("th"),
+        _vm._v(" "),
+        _c("th")
       ])
     ])
   }
@@ -53675,6 +53816,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: 'profiles_new',
     component: _components_Profiles_NewProfile__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
+    path: '/admin/profile/:id',
+    name: 'profile_show',
+    component: _components_Profiles_NewProfile__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }, {
     path: '/admin/news',
     name: 'news',
     component: _components_News_Posts__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -53717,6 +53862,7 @@ try {
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common['Accept'] = 'application/json';
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

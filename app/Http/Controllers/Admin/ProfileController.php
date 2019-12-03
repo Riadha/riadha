@@ -40,4 +40,11 @@ class ProfileController extends Controller{
 
         return response()->json($profile, 200);
     }
+
+    /**
+     * Get a list of profiles
+     */
+    public function index() {
+        return response()->json($this->manager->index(),200);
+    }
 }

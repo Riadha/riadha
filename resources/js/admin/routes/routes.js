@@ -28,6 +28,11 @@ const router = new VueRouter({
             component: NewProfile
         },
         {
+            path: '/admin/profile/:id',
+            name: 'profile_show',
+            component: NewProfile
+        },
+        {
             path: '/admin/news',
             name: 'news',
             component: Posts

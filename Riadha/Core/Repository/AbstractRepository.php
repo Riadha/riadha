@@ -42,4 +42,11 @@ abstract class AbstractRepository implements RepositoryInterface {
     public function getCount() {
         return $this->model->count();
     }
+
+    /**
+     * Get a collection of the models
+     */
+    public function index() {
+        return $this->model->paginate(15);
+    }
 }

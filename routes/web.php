@@ -25,6 +25,10 @@ Route::post('/admin/v1/profiles','Admin\ProfileController@store')
     ->name('profiles.store')
     ->middleware(['auth','admin']);
 
+Route::get('/admin/v1/profiles','Admin\ProfileController@index')
+    ->name('profiles.index')
+    ->middleware(['auth','admin']);
+
 /**
  * Admin SPA
  */
