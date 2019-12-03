@@ -8,6 +8,16 @@ use Riadha\Profiles\ProfilesManager;
 class ProfileController extends Controller
 {
     /**
+     * @var ProfilesManager
+     */
+    protected $manager;
+
+    function __construct()
+    {
+        $this->manager = new ProfilesManager();
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -18,35 +28,24 @@ class ProfileController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($country, $id, $name)
     {
-        //
+        $profile = $this->manager->findBySlug('/' . request()->path());
+
+        if ($profile){
+            return view('profile.show')->with([
+                'profile' => $profile
+            ]);
+        } else {
+            app()->abort(404);
+        }
+
+
     }
 
     /**

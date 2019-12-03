@@ -49,6 +49,13 @@ class ProfilesManager{
     }
 
     /**
+     * Get a profile given the slug
+     */
+    public function findBySlug($slug) {
+        return $this->repo->findBySlug($slug);
+    }
+
+    /**
      * Generate a url slug for an athlete
      */
     private function generateSlug(Profile $profile){
