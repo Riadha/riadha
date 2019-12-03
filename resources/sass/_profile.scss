@@ -1,0 +1,9 @@
+.header-image-container{
+    height: 250px;
+    overflow: hidden;
+    img{
+        display: block;
+        object-fit: cover;
+        width: 100%;
+    }
+}

@@ -58,4 +58,11 @@ class Profile extends Model implements AttachableInterface
     {
         $this->attributes['country'] = strtolower($value);
     }
+
+    /**
+     * Combine all name fields to yield one name
+     */
+    public function getNameAttribute($value) {
+        return $this->first_name . ' ' . $this->middle_name . ' ' . $this->last_name;
+    }
 }

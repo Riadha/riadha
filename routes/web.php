@@ -18,6 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 /**
+ * Profile
+ */
+Route::get('/athlete/{country}/{id}/{name}', 'ProfileController@show');
+
+/**
  * Admin Routes
  *
  */

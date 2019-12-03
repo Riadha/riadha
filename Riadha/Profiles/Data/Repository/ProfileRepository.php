@@ -14,4 +14,17 @@ class ProfileRepository extends AbstractRepository {
     {
         parent::__construct($model);
     }
+
+    /**
+     * Get a profile given a slug
+     * @param $slug
+     *
+     * @return Profile
+     */
+    public function findBySlug(string $slug) {
+        $profile = Profile::where('slug', $slug)
+            ->first();
+
+        return $profile;
+    }
 }
