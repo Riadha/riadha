@@ -1,0 +1,10 @@
+name: riadha
+recipe: laravel
+config:
+  webroot: public
+  xdebug: true
+services:
+  cache:
+    type: redis:4.0
+    portforward: 6380
+    persist: true

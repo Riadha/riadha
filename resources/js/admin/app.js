@@ -1,10 +1,10 @@
 import '../bootstrap';
 import Vue from 'vue';
-
+import ImageUploader from "vue-image-upload-resize";
 import Routes from './routes/routes.js';
-
 import App from './components/App'
 
+Vue.use(ImageUploader);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
