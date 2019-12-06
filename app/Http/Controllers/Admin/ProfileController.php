@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Riadha\Profiles\ProfilesManager;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller{
     /**
@@ -34,8 +35,21 @@ class ProfileController extends Controller{
 
         $profile = $this->manager->create($request->all());
 
-        if ($request->has('profile_photo')){
-            $profile->profilephoto = $request->file('profile_photo');
+        if ($request->has('profile_pic')){
+            $str = $request->profile_pic['dataUrl'];
+
+            $data = explode( ',', $str );
+
+            $filename = uniqid() . $request->profile_pic['info']['name'];
+
+            $file = Storage::put($filename, base64_decode($data[1]));
+
+            $contents = Storage::get($filename);
+
+            $profile->profilephoto = $contents;
+            $profile->save();
+
+            Storage::delete($filename);
         }
 
         return response()->json($profile, 200);
