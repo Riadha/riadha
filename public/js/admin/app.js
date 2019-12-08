@@ -54105,8 +54105,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_bootstrap__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var vue_image_upload_resize__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-image-upload-resize */ "./node_modules/vue-image-upload-resize/dist/vue-image-upload-resize.umd.min.js");
-/* harmony import */ var vue_image_upload_resize__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_image_upload_resize__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var vue_image_upload_resize__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-image-upload-resize */ "./node_modules/vue-image-upload-resize/dist/vue-image-upload-resize.umd.min.js");
+/* harmony import */ var vue_image_upload_resize__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_image_upload_resize__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _routes_routes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./routes/routes.js */ "./resources/js/admin/routes/routes.js");
 /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/App */ "./resources/js/admin/components/App.vue");
 
@@ -54114,7 +54114,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_image_upload_resize__WEBPACK_IMPORTED_MODULE_2___default.a);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_image_upload_resize__WEBPACK_IMPORTED_MODULE_5___default.a);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

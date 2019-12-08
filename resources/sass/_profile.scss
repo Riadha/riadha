@@ -9,4 +9,9 @@
 }
 .profile-header-row{
     height:250px;
+    .profile_photo{
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
 }
