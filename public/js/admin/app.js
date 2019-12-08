@@ -53886,7 +53886,7 @@ window.axios.defaults.headers.common['Accept'] = 'application/json';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/nandwabee/Dev/projects/PHP/Partners/Riadha/resources/js/admin/app.js */"./resources/js/admin/app.js");
+module.exports = __webpack_require__(/*! /home/robot/Dev/projects/clients/riadha/riadha/resources/js/admin/app.js */"./resources/js/admin/app.js");
 
 
 /***/ })
