@@ -10724,3 +10724,7 @@ a.text-dark:focus {
   width: 100%;
 }
 
+.profile-header-row {
+  height: 250px;
+}
+
