@@ -27,7 +27,7 @@
 
                         <li>
                             <router-link to="/admin/news" class="navbar-link">
-                                Data
+                                Tournaments
                             </router-link>
                         </li>
 

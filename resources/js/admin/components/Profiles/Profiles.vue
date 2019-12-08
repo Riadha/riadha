@@ -32,15 +32,34 @@
                         </tr>
                     </tbody>
                 </table>
+
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item" v-bind:class="{ disabled:disablePrevious }">
+                            <a class="page-link" @click="previousPage()">Previous</a>
+                        </li>
+                        <li class="page-item" v-bind:class="{ disabled:disableNext }">
+                            <a class="page-link" @click="nextPage()">Next</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
 </template>
 <script>
+    /**
+     * @todo Reduce code duplication
+     */
     export default {
         data() {
             return {
-                profiles: {}
+                profiles: {},
+                current_page: 1,
+                last_page: null,
+                next_page_url: null,
+                prev_page_url: null,
+                total: 0
             }
         },
         mounted() {
@@ -51,9 +70,42 @@
                 const vm = this;
 
                 axios.get('/admin/v1/profiles').then(function (res) {
-                    console.log(res)
-                    vm.profiles = res.data.data
+                    vm.profiles = res.data.data;
+                    vm.next_page_url = res.data.next_page_url;
+                    vm.last_page = res.data.last_page;
+                    vm.current_page = res.data.current_page;
+                    vm.total = res.data.total;
                 })
+            },
+            nextPage: function () {
+                const vm = this;
+
+                axios.get(this.next_page_url).then(function (res) {
+                    vm.profiles = res.data.data;
+                    vm.next_page_url = res.data.next_page_url;
+                    vm.last_page = res.data.last_page;
+                    vm.current_page = res.data.current_page;
+                    vm.prev_page_url = res.data.prev_page_url;
+                })
+            },
+            previousPage: function () {
+                const vm = this;
+
+                axios.get(this.prev_page_url).then(function (res) {
+                    vm.profiles = res.data.data;
+                    vm.next_page_url = res.data.next_page_url;
+                    vm.last_page = res.data.last_page;
+                    vm.current_page = res.data.current_page;
+                    vm.prev_page_url = res.data.prev_page_url;
+                })
+            }
+        },
+        computed: {
+            disablePrevious: function () {
+                return this.current_page === 1;
+            },
+            disableNext: function () {
+                return this.current_page === this.last_page;
             }
         }
     }

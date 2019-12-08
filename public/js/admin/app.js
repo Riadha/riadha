@@ -2200,10 +2200,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/**
+ * @todo Reduce code duplication
+ */
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      profiles: {}
+      profiles: {},
+      current_page: 1,
+      last_page: null,
+      next_page_url: null,
+      prev_page_url: null,
+      total: 0
     };
   },
   mounted: function mounted() {
@@ -2213,9 +2233,40 @@ __webpack_require__.r(__webpack_exports__);
     fetchProfiles: function fetchProfiles() {
       var vm = this;
       axios.get('/admin/v1/profiles').then(function (res) {
-        console.log(res);
         vm.profiles = res.data.data;
+        vm.next_page_url = res.data.next_page_url;
+        vm.last_page = res.data.last_page;
+        vm.current_page = res.data.current_page;
+        vm.total = res.data.total;
       });
+    },
+    nextPage: function nextPage() {
+      var vm = this;
+      axios.get(this.next_page_url).then(function (res) {
+        vm.profiles = res.data.data;
+        vm.next_page_url = res.data.next_page_url;
+        vm.last_page = res.data.last_page;
+        vm.current_page = res.data.current_page;
+        vm.prev_page_url = res.data.prev_page_url;
+      });
+    },
+    previousPage: function previousPage() {
+      var vm = this;
+      axios.get(this.prev_page_url).then(function (res) {
+        vm.profiles = res.data.data;
+        vm.next_page_url = res.data.next_page_url;
+        vm.last_page = res.data.last_page;
+        vm.current_page = res.data.current_page;
+        vm.prev_page_url = res.data.prev_page_url;
+      });
+    }
+  },
+  computed: {
+    disablePrevious: function disablePrevious() {
+      return this.current_page === 1;
+    },
+    disableNext: function disableNext() {
+      return this.current_page === this.last_page;
     }
   }
 });
@@ -38266,7 +38317,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                            Data\n                        "
+                            "\n                            Tournaments\n                        "
                           )
                         ]
                       )
@@ -39020,6 +39071,54 @@ var render = function() {
             }),
             0
           )
+        ]),
+        _vm._v(" "),
+        _c("nav", { attrs: { "aria-label": "Page navigation example" } }, [
+          _c("ul", { staticClass: "pagination" }, [
+            _c(
+              "li",
+              {
+                staticClass: "page-item",
+                class: { disabled: _vm.disablePrevious }
+              },
+              [
+                _c(
+                  "a",
+                  {
+                    staticClass: "page-link",
+                    on: {
+                      click: function($event) {
+                        return _vm.previousPage()
+                      }
+                    }
+                  },
+                  [_vm._v("Previous")]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                staticClass: "page-item",
+                class: { disabled: _vm.disableNext }
+              },
+              [
+                _c(
+                  "a",
+                  {
+                    staticClass: "page-link",
+                    on: {
+                      click: function($event) {
+                        return _vm.nextPage()
+                      }
+                    }
+                  },
+                  [_vm._v("Next")]
+                )
+              ]
+            )
+          ])
         ])
       ])
     ])
