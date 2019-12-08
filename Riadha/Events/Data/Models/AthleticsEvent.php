@@ -26,4 +26,13 @@ class AthleticsEvent extends Model {
     public function tournament () {
         return $this->belongsTo('Riadha\Events\Data\Models\Tournament');
     }
+
+    /**
+     * Get the participants in the event
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function participants () {
+        return $this->hasMany('Riadha\Events\Data\Models\Participant', 'event_id');
+    }
 }
