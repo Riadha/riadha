@@ -65,4 +65,13 @@ class Profile extends Model implements AttachableInterface
     public function getNameAttribute($value) {
         return $this->first_name . ' ' . $this->middle_name . ' ' . $this->last_name;
     }
+
+    /**
+     * An athlete can be a participant in multiple events.
+     *
+     * Create a relationship to a participant
+     */
+    public function participations () {
+        return $this->hasMany('Riadha\Events\Data\Models\Participant', 'profile_id');
+    }
 }
