@@ -19,9 +19,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="bg-gray-200">
     <div id="app">
-        @include('layouts.nav')
+        @yield('nav')
 
         <main class="py-4">
             @yield('content')

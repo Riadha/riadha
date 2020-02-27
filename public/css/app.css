@@ -597,6 +597,8 @@ video {
 
 .container{
   width: 100%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 @media (min-width: 640px){
@@ -13946,7 +13948,11 @@ video {
   transition-duration: 1000ms;
 }
 
-.navbar-brand img {
+.navbar {
+  height: 54px;
+}
+
+.navbar .logo {
   height: 40px;
 }
 
