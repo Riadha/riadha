@@ -33,3 +33,10 @@ Route::get('/admin/{any}', 'AdminController@index')
     ->middleware(['auth','admin']);
 
 Route::get('/my/account', 'HomeController@index')->name('home');
+
+/**
+ * News Routes
+ *
+ */
+
+Route::get('/news', 'NewsController@index')->name('news');
