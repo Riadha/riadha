@@ -1,3 +1,21 @@
+
+input CreateAthleteInput {
+    first_name: String!,
+    last_name: String!
+}
+
 type Query {
     hello: String!
+}
+
+type Athlete {
+    id: ID!
+    first_name: String!
+    last_name: String!
+    created_at: String!
+    updated_at: String!
+}
+
+type Mutation {
+    createAthlete(input: CreateAthleteInput): Athlete
 }
